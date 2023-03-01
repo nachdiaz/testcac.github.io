@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        @font-face {
+            font-family: "Gotham-Book";
+            src: url('src/fonts/GothamRnd-Book.otf');
+        }
+        
+        @font-face {
+            font-family: "Gotham-BookI";
+            src: url('src/fonts/GothamRnd-BookIta.otf');
+        }
+        
+        @font-face {
+            font-family: "Gotham-Bold";
+            src: url('src/fonts/GothamRnd-Bold.otf');
+        }
+        
+        :root {
+            --primary: #F8C823;
+            --secondary: #0A7DCD;
+            --text-color: #363636;
+            --background-color: #F2F2F2;
+            --text-bold: "Gotham-Bold", Arial;
+            --text-normal: "Gotham-Book", Arial;
+            --text-normal-i: "Gotham-BookI", Arial;
+        }
+        
+        body {
+            background: var(--primary);
+            padding: 1rem;
+        }
+        
+        h1 {
+            font-family: var(--text-bold);
+            color: var(--text-color);
+            text-align: center;
+            font-size: 3rem;
+        }
+        
+        .card__container {
+            display: grid;
+            grid-template-columns: minmax(20rem, 1fr) 2rem minmax(20rem, 1fr);
+            grid-gap: 1rem;
+            margin: 2rem auto 1rem;
+            grid-auto-flow: column;
+            max-width: 70rem;
+        }
+        
+        .card__container:after {
+            content: "";
+            background: #D9D9D9;
+            grid-column: 2/3;
+            border-radius: 10rem;
+            width: 2rem;
+            grid-row: 1/40;
+        }
+        
+        .card {
+            color: var(--text-color);
+            background: var(--background-color);
+            border-radius: .3rem;
+            padding: .5rem 1rem;
+            position: relative;
+            margin-top: .3rem
+        }
+        
+        .card h2 {
+            font-family: var(--text-bold);
+            color: var(--secondary);
+        }
+        
+        .card h3 {
+            font-family: var(--text-normal-i);
+            font-weight: 400;
+        }
+        
+        .card ul {
+            font-family: var(--text-normal);
+            list-style-position: inside;
+            margin: .3rem 1rem;
+        }
+        
+        .card ul.m-hidden {
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .card button {
+            width: 3rem;
+            height: 3rem;
+            font-size: 3rem;
+            border-radius: 3rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--secondary);
+            border: solid 3px var(--secondary);
+            position: absolute;
+            top: .5rem;
+            right: .5rem;
+            cursor: pointer;
+            transition: all ease .3s;
+        }
+        
+        .card button.turned {
+            transform: rotate(45deg);
+        }
+        
+        .card.m-i.m-first:before {
+            content: "";
+            background: var(--background-color);
+            width: 1.5rem;
+            height: 1.5rem;
+            position: absolute;
+            top: 0;
+            right: -2.75rem;
+            border-radius: 2rem;
+        }
+        
+        .card.m-i {
+            grid-column: 1/2;
+        }
+        
+        .card.m-d {
+            grid-column: 3/4;
+        }
+        
+        .card.m-d.m-first:before {
+            content: "";
+            background: var(--background-color);
+            width: 1.5rem;
+            height: 1.5rem;
+            position: absolute;
+            top: 0;
+            left: -2.75rem;
+            border-radius: 2rem;
+        }
+        
+        .week-title {
+            font-family: var(--text-bold);
+            color: var(--text-color);
+            font-size: 1.5rem;
+            margin-top: .3rem
+        }
+        
+        .week-title.m-i {
+            grid-column: 1/2;
+            text-align: right
+        }
+        
+        .week-title.m-d {
+            grid-column: 3/4;
+        }
+        
+        .week-title.m-double {
+            grid-row: span 2;
+        }
+    </style>
+</head>
+
+<body>
+    <header> <img style="margin: auto;display: block;" src="src/img/logo.png" alt="Agencia de Aprendizaje"> </header>
+    <main>
+        <h1>Cronograma Diseño UX/UI</h1>
+        <section class="card__container">
+            <p class="week-title m-d">Semana del 27/2</p>
+            <article class="card m-i m-first">
+                <h2>Clase 00</h2>
+                <h3>Bienvenida</h3>
+                <ul class="m-hidden">
+                    <li>¿Qué es Codo a Codo?</li>
+                    <li>Carreras IT</li>
+                    <li>Aula Virtual</li>
+                    <li>Información del curso</li>
+                </ul>
+                <button id="open-btn">+</button>
+            </article>
+            <p class="week-title m-double m-i">Semana del 6/3</p>
+            <article class="card m-d m-first">
+                <h2>Clase 01</h2>
+                <h3>Introducción al diseño</h3>
+                <ul class="m-hidden">
+                    <li>¿Qué es el diseño?</li>
+                    <li>Retórica de la imágen</li>
+                    <li>Diseño gráfico y Diseño UX</li>
+                    <li>Diseño UI</li>
+                    <li>Usabilidad</li>
+                    <li>Metodología: Diseño centrado en el usuario</li>
+                </ul>
+                <button id="open-btn">+</button>
+            </article>
+            <article class="card m-d">
+                <h2>Clase 02</h2>
+                <h3>Imágenes en el diseño</h3>
+                <ul class="m-hidden">
+                    <li>Impacto de la imagen</li>
+                    <li>Fotografía</li>
+                    <li>Leyes Compositivas</li>
+                    <li>Puntos de interés</li>
+                    <li>Composición en el diseño</li>
+                    <li>Imagen en diseño web</li>
+                    <li>Leyes Gestálticas</li>
+                </ul>
+                <button id="open-btn">+</button>
+            </article>
+            <p class="week-title m-double m-d">Semana del 13/3</p>
+            <article class="card m-i m-first">
+                <h2>Clase 03</h2>
+                <h3>Gráfico vectorial vs. Mapa de bits</h3>
+                <ul class="m-hidden">
+                    <li>Diferenciación</li>
+                    <li>Resoluciones</li>
+                    <li>Adobe Photoshop</li>
+                    <li>Formatos de imágenes</li>
+                    <li>Ejercicio de práctica</li>
+                </ul>
+                <button id="open-btn">+</button>
+            </article>
+            <article class="card m-i">
+                <h2>Clase 04</h2>
+                <h3>Research y Benchmarking</h3>
+                <ul class="m-hidden">
+                    <li>¿Qué significa iterar?</li>
+                    <li>UX Research</li>
+                    <li>Insights</li>
+                    <li>Benchmarking</li>
+                    <li>Tarea para el Proyecto Final</li>
+                </ul>
+                <button id="open-btn">+</button>
+            </article>
+            <p class="week-title m-double m-i">Semana del 20/3</p>
+            <article class="card m-d m-first">
+                <h2>Clase 05</h2>
+                <h3>Arquetipos de Persona</h3>
+                <ul class="m-hidden">
+                    <li>¿Qué es una Persona?</li>
+                    <li>Proto Persona</li>
+                    <li>Mapa de empatía</li>
+                    <li>Tarea para el Proyecto Final</li>
+                </ul>
+                <button id="open-btn">+</button>
+            </article>
+            <article class="card m-d">
+                <h2>Clase 06</h2>
+                <h3>Entrevistas Cualitativas</h3>
+                <ul class="m-hidden">
+                    <li>¿Qué es una entrevista?</li>
+                    <li>Tipos de entrevista</li>
+                    <li>Etapas de una entrevista</li>
+                    <li>Tarea para el Proyecto Final</li>
+                </ul>
+                <button id="open-btn">+</button>
+            </article>
+            <p class="week-title m-double m-d">Semana del 27/3</p>
+            <article class="card m-i m-first">
+                <h2>Clase 07</h2>
+                <h3>POV y MVP</h3>
+                <ul class="m-hidden">
+                    <li>¿Qué es un POV?</li>
+                    <li>Recursos: Storytelling y Storyboard</li>
+                    <li>¿Qué es un MVP?</li>
+                    <li>Listado de funcionalidades</li>
+                    <li>Tarea para el Proyecto Final</li>
+                </ul>
+                <button id="open-btn">+</button>
+            </article>
+            <article class="card m-i">
+                <h2>Clase 08</h2>
+                <h3>Arquitectura de la Información</h3>
+                <ul class="m-hidden">
+                    <li>¿Qué es la Arquitectura de la Información?</li>
+                    <li>Card Sorting en Optimal Workshop</li>
+                    <li>Matriz de Similitud y Dendrograma</li>
+                    <li>Mapa del sitio en Whimsical</li>
+                    <li>Tarea para el Proyecto Final</li>
+                </ul>
+                <button id="open-btn">+</button>
+            </article>
+            <p class="week-title m-double m-i">Semana del 3/4</p>
+            <article class="card m-d m-first">
+                <h2>Clase 09</h2>
+                <h3>User Flow</h3>
+                <ul class="m-hidden">
+                    <li>¿Qué es un User Flow?</li>
+                    <li>Tipos de flujo de usuario</li>
+                    <li>Task Flow y Flow Chart</li>
+                    <li>¿Qué es el Happy Path?</li>
+                    <li>Tarea para el Proyecto Final</li>
+                </ul>
+                <button id="open-btn">+</button>
+            </article>
+            <article class="card m-d">
+                <h2>Clase 10</h2>
+                <h3>Repaso e Integración</h3>
+                <ul class="m-hidden">
+                    <li>Repaso de todos los ejercicios que forman parte de la Entrega Final</li>
+                    <li>Ejemplo de entregas</li>
+                    <li>Espacio de consulta</li>
+                </ul>
+                <button id="open-btn">+</button>
+            </article>
+            <p class="week-title m-double m-d">Semana del 10/4</p>
+            <article class="card m-i m-first">
+                <h2>Clase 11</h2>
+                <h3>Preentrega</h3> </article>
+            <article class="card m-i">
+                <h2>Clase 12</h2>
+                <h3>Prototipos y Wireframes</h3>
+                <ul class="m-hidden">
+                    <li>¿Qué es un prototipo?</li>
+                    <li>Wireframes en baja/media/alta</li>
+                    <li>Bocetos a mano</li>
+                    <li>Wireframe digital</li>
+                    <li>Figma</li>
+                    <li>Tarea para el Proyecto Final</li>
+                </ul>
+                <button id="open-btn">+</button>
+            </article>
+            <p class="week-title m-double m-i">Semana del 17/4</p>
+            <article class="card m-d m-first">
+                <h2>Clase 13</h2>
+                <h3>Patrones de Diseño</h3>
+                <ul class="m-hidden">
+                    <li>¿Qué son los patrones de diseño?</li>
+                    <li>UX Writing</li>
+                    <li>Material Design y Human Interface</li>
+                    <li>Patrones de navegación</li>
+                    <li>Patrones de interacción</li>
+                    <li>Tarea para el Proyecto Final</li>
+                </ul>
+                <button id="open-btn">+</button>
+            </article>
+            <article class="card m-d">
+                <h2>Clase 14</h2>
+                <h3>Prototipo Funcional</h3>
+                <ul class="m-hidden">
+                    <li>Métricas UX</li>
+                    <li>Prototipo funcional</li>
+                    <li>Demostración en Figma</li>
+                    <li>Tarea para el Proyecto Final</li>
+                </ul>
+            </article>
+            <p class="week-title m-double m-d">Semana del 24/4</p>
+            <article class="card m-i m-first">
+                <h2>Clase 15</h2>
+                <h3>Pruebas de Usabilidad</h3>
+                <ul class="m-hidden">
+                    <li>Testeo con usuarios</li>
+                    <li>Guía del Moderador</li>
+                    <li>Consejos para realizarla</li>
+                    <li>Guía del Observador</li>
+                    <li>Planillas de Registro</li>
+                    <li>Tarea para el Proyecto Final</li>
+                </ul>
+                <button id="open-btn">+</button>
+            </article>
+            <article class="card m-i">
+                <h2>Clase 16</h2>
+                <h3>Atomic Design</h3>
+                <ul class="m-hidden">
+                    <li>¿Qué es el Atomic Design?</li>
+                    <li>Componentes y variantes</li>
+                    <li>Composición</li>
+                    <li>Tarea para el Proyecto Final</li>
+                </ul>
+                <button id="open-btn">+</button>
+            </article>
+            <p class="week-title m-double m-i">Semana del 1/5</p>
+            <article class="card m-d m-first">
+                <h2>Clase 17</h2>
+                <h3>Figma</h3>
+                <ul class="m-hidden">
+                    <li>La plataforma</li>
+                    <li>Principios básicos</li>
+                    <li>Comunidad en Figma</li>
+                    <li>Exportar e importar archivos</li>
+                    <li>Componentes y variables</li>
+                    <li>Auto-Layout</li>
+                    <li>Prototipado funcional</li>
+                </ul>
+                <button id="open-btn">+</button>
+            </article>
+            <article class="card m-d">
+                <h2>Clase 18</h2>
+                <h3>Sistema de grillas</h3>
+                <ul class="m-hidden">
+                    <li>Resolución</li>
+                    <li>Diseño modular</li>
+                    <li>Aplicación de grillas</li>
+                    <li>Tarea para el Proyecto Final</li>
+                </ul>
+                <button id="open-btn">+</button>
+            </article>
+            <p class="week-title m-double m-d">Semana del 8/5</p>
+            <article class="card m-i m-first">
+                <h2>Clase 19</h2>
+                <h3>Estándares y Guidelines</h3>
+                <ul class="m-hidden">
+                    <li>Leyes UX ( guías de estilo)</li>
+                    <li>Guidelines de Android y IOS</li>
+                    <li>Tarea para el Proyecto Final</li>
+                </ul>
+                <button id="open-btn">+</button>
+            </article>
+            <article class="card m-i">
+                <h2>Clase 20</h2>
+                <h3>Illustrator y Moodboard</h3>
+                <ul class="m-hidden">
+                    <li>Repaso de mapa de bits</li>
+                    <li>Illustrator</li>
+                    <li>Trabajo con vectores</li>
+                    <li>Moodboard</li>
+                    <li>Armado de moodboard</li>
+                    <li>Tarea para el Proyecto Final</li>
+                </ul>
+                <button id="open-btn">+</button>
+            </article>
+            <p class="week-title m-double m-i">Semana del 15/5</p>
+            <article class="card m-d m-first">
+                <h2>Clase 21</h2>
+                <h3>Color en el diseño</h3>
+                <ul class="m-hidden">
+                    <li>Principios básicos</li>
+                    <li>Psicología del color</li>
+                    <li>Esquemas y paletas de colores</li>
+                    <li>Herramientas</li>
+                    <li>Tarea para el Proyecto Final</li>
+                </ul>
+                <button id="open-btn">+</button>
+            </article>
+            <article class="card m-d">
+                <h2>Clase 22</h2>
+                <h3>Tipografía</h3>
+                <ul class="m-hidden">
+                    <li>Tipos de tipografía</li>
+                    <li>Familias tipográficas</li>
+                    <li>Jerarquías tipográficas</li>
+                    <li>Legibilidad</li>
+                    <li>Tarea para el Proyecto Final</li>
+                </ul>
+                <button id="open-btn">+</button>
+            </article>
+            <p class="week-title m-double m-d">Semana del 22/5</p>
+            <article class="card m-i m-first">
+                <h2>Clase 23</h2>
+                <h3>UI KIT y Alta fidelidad</h3>
+                <ul class="m-hidden">
+                    <li>¿Qué es un UI Kit?</li>
+                    <li>Elementos que lo componen</li>
+                    <li>Librerías en Figma</li>
+                    <li>¿Qué es un Sistema de Diseño?</li>
+                    <li>Alta Fidelidad</li>
+                    <li>Tarea para el Proyecto Final</li>
+                </ul>
+                <button id="open-btn">+</button>
+            </article>
+            <article class="card m-i">
+                <h2>Clase 24</h2>
+                <h3>Logo</h3>
+                <ul class="m-hidden">
+                    <li>¿Qué es logo?</li>
+                    <li>Logotipo, Isotipo, Imagotipo e Isologo.</li>
+                    <li>Características y función de los logos.</li>
+                    <li>Diseñador UX/UI y Diseñador gráfico.</li>
+                    <li>Tarea para el Proyecto Final</li>
+                </ul>
+                <button id="open-btn">+</button>
+            </article>
+            <p class="week-title m-double m-i">Semana del 29/5</p>
+            <article class="card m-d m-first">
+                <h2>Clase 25</h2>
+                <h3>Branding</h3>
+                <ul class="m-hidden">
+                    <li>¿Qué es branding?</li>
+                    <li>¿Qué es marca?</li>
+                    <li>Steve Jobs</li>
+                    <li>Estrategia de Branding</li>
+                    <li>Tarea para el Proyecto Final</li>
+                </ul>
+                <button id="open-btn">+</button>
+            </article>
+            <article class="card m-d">
+                <h2>Clase 26</h2>
+                <h3>Entrega final</h3> </article>
+            <p class="week-title m-double m-d">Semana del 5/6</p>
+            <article class="card m-i m-first">
+                <h2>Clase 27</h2>
+                <h3>Elevator Pitch</h3>
+                <ul class="m-hidden">
+                    <li>¿Qué es y para qué sirve?</li>
+                    <li>Ejemplos en clase</li>
+                    <li>Estructura del elevator pitch</li>
+                    <li>Storytelling</li>
+                    <li>Tarea para el Proyecto Final</li>
+                </ul>
+                <button id="open-btn">+</button>
+            </article>
+            <article class="card m-i">
+                <h2>Clase 28</h2>
+                <h3>Motion</h3>
+                <ul class="m-hidden">
+                    <li>¿Qué es el Motion?</li>
+                    <li>12 principios de UX en Motion</li>
+                    <li>Anatomía de las transiciones</li>
+                    <li>Microinteracciones</li>
+                    <li>Tarea para el Proyecto Final</li>
+                </ul>
+                <button id="open-btn">+</button>
+            </article>
+            <p class="week-title m-double m-i">Semana del 12/6</p>
+            <article class="card m-d m-first">
+                <h2>Clase 29</h2>
+                <h3>Accesibilidad Digital</h3>
+                <ul class="m-hidden">
+                    <li>¿Qué significa accesibilidad?</li>
+                    <li>Principios de accesibilidad web</li>
+                    <li>Niveles de conformidad</li>
+                    <li>Plugins útiles</li>
+                    <li>Tarea para el Proyecto Final</li>
+                </ul>
+                <button id="open-btn">+</button>
+            </article>
+            <article class="card m-d">
+                <h2>Clase 30</h2>
+                <h3>Heurísticas</h3>
+                <ul class="m-hidden">
+                    <li>Evaluación heurística</li>
+                    <li>Los 10 principios de Jakob Nielsen</li>
+                    <li>Tarea para el Proyecto Final</li>
+                </ul>
+                <button id="open-btn">+</button>
+            </article>
+            <p class="week-title m-double m-d">Semana del 19/6</p>
+            <article class="card m-i m-first">
+                <h2>Clase 31</h2>
+                <h3>Autoevaluación</h3>
+                <ul class="m-hidden">
+                    <li>Completar formulario de autoevaluación</li>
+                </ul>
+                <button id="open-btn">+</button>
+            </article>
+            <article class="card m-i">
+                <h2>Clase 32</h2>
+                <h3>Reporte UX y Portfolio</h3>
+                <ul class="m-hidden">
+                    <li>¿Qué es un Reporte UX?</li>
+                    <li>Armado de casos de estudio</li>
+                    <li>Mockups</li>
+                    <li>¿Qué es un Portfolio UX?</li>
+                    <li>Recursos útiles para continuar aprendiendo: libros, blogs, podcasts, etc.</li>
+                    <li>Tarea para el Proyecto Final</li>
+                </ul>
+                <button id="open-btn">+</button>
+            </article>
+            <p class="week-title m-double m-i">Semana del 26/6</p>
+            <article class="card m-d m-first">
+                <h2>Clase 33</h2>
+                <h3>Entrega Final y Presentación</h3>
+                <ul class="m-hidden">
+                    <li>Entrega del Proyecto final</li>
+                    <li>Presentación de los estudiantes de sus Proyectos finales</li>
+                    <li>Presentación de slides y Prototipo en alta fidelidad</li>
+                </ul>
+                <button id="open-btn">+</button>
+            </article>
+            <article class="card m-d">
+                <h2>Clase 34</h2>
+                <h3>Exposición de Proyectos</h3>
+                <ul class="m-hidden">
+                    <li>Presentación de los estudiantes de sus Proyectos finales</li>
+                    <li>Presentación de slides y Prototipo en alta fidelidad</li>
+                </ul>
+            </article>
+            <p class="week-title m-double m-d">Semana del 3/7</p>
+            <article class="card m-i m-first">
+                <h2>Clase 35</h2>
+                <h3>Exposición de Proyectos</h3>
+                <ul class="m-hidden">
+                    <li>Presentación de los estudiantes de sus Proyectos finales</li>
+                    <li>Presentación de slides y Prototipo en alta fidelidad</li>
+                </ul>
+                <button id="open-btn">+</button>
+            </article>
+            <article class="card m-i">
+                <h2>Clase 36</h2>
+                <h3>Exposición de Proyectos</h3>
+                <ul class="m-hidden">
+                    <li>Presentación de los estudiantes de sus Proyectos finales</li>
+                    <li>Presentación de slides y Prototipo en alta fidelidad</li>
+                </ul>
+                <button id="open-btn">+</button>
+            </article>
+            <p class="week-title m-double m-i">Semana del 10/7</p>
+            <article class="card m-d m-first">
+                <h2>Clase 37</h2>
+                <h3>Exposición de Proyectos</h3>
+                <ul class="m-hidden">
+                    <li>Presentación de los estudiantes de sus Proyectos finales</li>
+                    <li>Presentación de slides y Prototipo en alta fidelidad</li>
+                </ul>
+                <button id="open-btn">+</button>
+            </article>
+            <article class="card m-d">
+                <h2>Clase 38</h2>
+                <h3>Cierre de la cursada</h3>
+                <ul class="m-hidden">
+                    <li>Recomendaciones para el EFI.</li>
+                    <li>Retrospectiva: fortalezas y oportunidades de mejora.</li>trg
+                    <li>Próximos pasos. Después del curso, ¿qué puedo hacer?</li>
+                    <li>¿Qué otras opciones ofrece Codo a Codo?</li>
+                    <li>Cierre de cursada.</li>
+                </ul>
+                <button id="open-btn">+</button>
+            </article>
+        </section>
+    </main>
+    <footer></footer>
+    <script>
+        let btn = document.querySelectorAll('#open-btn');
+        for (let i = 0; i < btn.length; i++) {
+            btn[i].addEventListener('click', function (event) {
+                this.classList.toggle('turned');
+                this.parentNode.querySelector('ul').classList.toggle('m-hidden');
+            });
+        };
+        todayDate = new Date();
+        var firstDay = new Date(todayDate.getFullYear(), 0, 1);
+        var numberOfDays = Math.floor((todayDate - firstDay) / (24 * 60 * 60 * 1000));
+        var weekNumber = Math.ceil((todayDate.getDay() + 1 + numberOfDays) / 7) - 9;
+        //0
+        let week = document.querySelectorAll('article');
+        week[weekNumber].querySelector('ul').classList.toggle('m-hidden');
+        week[weekNumber].querySelector('#open-btn').classList.toggle('turned');
+    </script>
+</body>
+
+</html>
