@@ -634,14 +634,15 @@
                 this.parentNode.querySelector('ul').classList.toggle('m-hidden');
             });
         };
-        todayDate = new Date();
-        var firstDay = new Date(todayDate.getFullYear(), 0, 1);
-        var numberOfDays = Math.floor((todayDate - firstDay) / (24 * 60 * 60 * 1000));
-        var weekNumber = Math.ceil((todayDate.getDay() + 1 + numberOfDays) / 7) - 9;
-        //0
-        let week = document.querySelectorAll('article');
-        week[weekNumber].querySelector('ul').classList.toggle('m-hidden');
-        week[weekNumber].querySelector('#open-btn').classList.toggle('turned');
+        let todayDate = new Date();
+        let firstDay = new Date(todayDate.getFullYear(), 0, 1);
+        let numberOfDays = Math.floor((todayDate - firstDay) / (24 * 60 * 60 * 1000));
+        let weekNumber = Math.ceil((todayDate.getDay() + 1 + numberOfDays) / 7) - 9;
+        let week = document.querySelectorAll('.week-title');
+        week[weekNumber].nextElementSibling.querySelector('ul').classList.toggle('m-hidden');
+        week[weekNumber].nextElementSibling.nextElementSibling.querySelector('ul').classList.toggle('m-hidden');
+        week[weekNumber].nextElementSibling.querySelector('#open-btn').classList.toggle('turned');
+        week[weekNumber].nextElementSibling.nextElementSibling.querySelector('#open-btn').classList.toggle('turned');
     </script>
 </body>
 
