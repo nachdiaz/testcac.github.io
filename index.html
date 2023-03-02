@@ -671,17 +671,24 @@
                 this.parentNode.querySelector('ul').classList.toggle('m-hidden');
             });
         };
+        //Fecha de hoy
         let todayDate = new Date();
-        let firstDay = new Date(todayDate.getFullYear(), 0, 1);
-        let numberOfDays = Math.floor((todayDate - firstDay) / (24 * 60 * 60 * 1000));
-        let weekNumber = Math.ceil((todayDate.getDay() + 1 + numberOfDays) / 7) - 9;
+        //Fecha de inicio de cursada
+        let theDate = new Date(2023, 1, 26, 23, 59, 59, 999);
+        //Dia actual de cursada
+        let numberOfDays = Math.floor((todayDate - theDate) / (24 * 60 * 60 * 1000));
+        //Dia de la semana de cursada
+        let weekNumber = Math.floor(numberOfDays / 7);
+        //Seleccionar todos los titulos
         let week = document.querySelectorAll('.week-title');
-        week[weekNumber].nextElementSibling.classList.toggle('active');
-        week[weekNumber].nextElementSibling.nextElementSibling.classList.toggle('active');
-        week[weekNumber].nextElementSibling.querySelector('ul').classList.toggle('m-hidden');
-        week[weekNumber].nextElementSibling.nextElementSibling.querySelector('ul').classList.toggle('m-hidden');
-        week[weekNumber].nextElementSibling.querySelector('#open-btn').classList.toggle('turned');
-        week[weekNumber].nextElementSibling.nextElementSibling.querySelector('#open-btn').classList.toggle('turned');
+        //Añadir las clases correspondientes al dia activo
+        let cardActive = week[weekNumber]
+        cardActive.nextElementSibling.classList.toggle('active');
+        cardActive.nextElementSibling.nextElementSibling.classList.toggle('active');
+        cardActive.nextElementSibling.querySelector('ul').classList.toggle('m-hidden');
+        cardActive.nextElementSibling.nextElementSibling.querySelector('ul').classList.toggle('m-hidden');
+        cardActive.nextElementSibling.querySelector('#open-btn').classList.toggle('turned');
+        cardActive.nextElementSibling.nextElementSibling.querySelector('#open-btn').classList.toggle('turned');
     </script>
 </body>
 
