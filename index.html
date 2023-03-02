@@ -675,6 +675,7 @@
         let weekNumber = Math.ceil((todayDate.getDay() + 1 + numberOfDays) / 7) - 9;
         let week = document.querySelectorAll('.week-title');
         week[weekNumber].nextElementSibling.classList.toggle('active');
+        week[weekNumber].nextElementSibling.nextElementSibling.classList.toggle('active');
         week[weekNumber].nextElementSibling.querySelector('ul').classList.toggle('m-hidden');
         week[weekNumber].nextElementSibling.nextElementSibling.querySelector('ul').classList.toggle('m-hidden');
         week[weekNumber].nextElementSibling.querySelector('#open-btn').classList.toggle('turned');
