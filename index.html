@@ -75,6 +75,14 @@
             margin-top: .3rem
         }
         
+        .card.active {
+            outline: solid 3px var(--secondary);
+        }
+        
+        .card.active:before {
+            background: var(--secondary)!important;
+        }
+        
         .card h2 {
             font-family: var(--text-bold);
             color: var(--secondary);
@@ -165,6 +173,33 @@
         
         .week-title.m-double {
             grid-row: span 2;
+        }
+        
+        @media(max-width:70rem) {
+            .card__container {
+                grid-template-columns: 2rem 1fr;
+            }
+            .card__container:after {
+                grid-column: 1/2;
+            }
+            .week-title.m-d,
+            .week-title.m-i,
+            .week-title {
+                text-align: left;
+                margin-top: 2rem;
+                grid-column: 2/3;
+            }
+            .card.m-d,
+            .card.m-i {
+                grid-column: 2/3;
+            }
+            .card.m-i.m-first:before {
+                right: unset;
+                left: -2.75rem;
+            }
+            .week-title:first-of-type {
+                margin-top: .3rem
+            }
         }
     </style>
 </head>
@@ -639,6 +674,7 @@
         let numberOfDays = Math.floor((todayDate - firstDay) / (24 * 60 * 60 * 1000));
         let weekNumber = Math.ceil((todayDate.getDay() + 1 + numberOfDays) / 7) - 9;
         let week = document.querySelectorAll('.week-title');
+        week[weekNumber].nextElementSibling.classList.toggle('active');
         week[weekNumber].nextElementSibling.querySelector('ul').classList.toggle('m-hidden');
         week[weekNumber].nextElementSibling.nextElementSibling.querySelector('ul').classList.toggle('m-hidden');
         week[weekNumber].nextElementSibling.querySelector('#open-btn').classList.toggle('turned');
